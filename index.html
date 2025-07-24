@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>To My Krimi 💖</title>
+    <style>
+        body {
+            background-color: #fff0f6;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 40px;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #d63384;
+        }
+
+        .button {
+            margin: 20px;
+            z-index: 10;
+            position: relative;
+        }
+
+        button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            button:hover {
+                background-color: #c21870;
+            }
+
+        .message, #videoContainer {
+            display: none;
+            margin: 30px auto;
+            max-width: 700px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .message {
+            background-image: linear-gradient(to bottom, #fff8e1, #ffeeb0);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 18px;
+            line-height: 1.7;
+            border: 2px solid #e0c38c;
+            font-family: 'Georgia', serif;
+            transform-origin: top center;
+            animation: scrollOpen 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes scrollOpen {
+            0% {
+                transform: scaleY(0.1);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        video {
+            width: 50%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: #ff6b81;
+            font-size: 20px;
+            animation: floatHeart 6s infinite;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-800px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Floating Letters */
+        .floating-letter {
+            position: absolute;
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff4d6d;
+            animation: floatLetter 8s infinite ease-in-out;
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        @keyframes floatLetter {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-600px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>To My Krimi 💌</h1>
+
+    <div class="button">
+        <button onclick="toggleLetter()">Open Letter</button>
+        <button onclick="toggleVideo()">Replay Our Memories</button>
+    </div>
+
+    <div id="letter" class="message">
+        <p>
+            To my dearest Krimi,<br><br>
+            You are the bestest part of my life — the chaos I enjoy, the peace I cherish.<br>
+            You make me laugh in the craziest ways, even when life throws tears at us.<br><br>
+
+            Through every fight, every silly moment, every silent stare... we’ve always found our way back to each other — like true best friends who never let go.<br><br>
+
+            I know busy days might be ahead, and distance may try to keep us apart. But never forget...<br>
+            Your Kinnu is always here, waiting for those little pop-up notifications, your crazy gossip, and those late-night rants that only you can deliver.<br><br>
+
+            Don’t forget to stay with me, my Kannama.<br>
+            This heart beats a little louder every time I hear your name. 💓<br><br>
+
+            Forever yours,<br>
+            <strong>Kinnu 💖</strong>
+        </p>
+    </div>
+
+    <div id="videoContainer">
+        <video controls>
+            <source src="kinnu-memories.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Floating Hearts -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerText = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = 15 + Math.random() * 25 + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+    <!-- Floating Letters (K A N N U) -->
+    <script>
+        const letters = ['K', 'A', 'N', 'N', 'U'];
+        function createLetter() {
+            const letter = document.createElement("div");
+            letter.classList.add("floating-letter");
+            letter.innerText = letters[Math.floor(Math.random() * letters.length)];
+            letter.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(letter);
+
+            setTimeout(() => {
+                letter.remove();
+            }, 8000);
+        }
+
+        setInterval(createLetter, 800);
+    </script>
+
+    <!-- Toggle Logic -->
+    <script>
+        function toggleLetter() {
+            const letter = document.getElementById("letter");
+            const video = document.getElementById("videoContainer");
+
+            if (letter.style.display === "block") {
+                letter.style.display = "none";
+            } else {
+                letter.style.display = "block";
+                letter.style.animation = "scrollOpen 0.8s ease forwards";
+            }
+
+            video.style.display = "none";
+        }
+
+        function toggleVideo() {
+            const video = document.getElementById("videoContainer");
+            const letter = document.getElementById("letter");
+
+            if (video.style.display === "block") {
+                video.style.display = "none";
+            } else {
+                video.style.display = "block";
+            }
+
+            letter.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
